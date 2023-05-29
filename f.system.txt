@@ -1,0 +1,60 @@
+#include<stdio.h>
+
+
+
+int main()
+{
+  int n;
+  printf("Enter the number of process: ");
+  scanf("%d", &n);
+
+  int BurstTIme[n];
+  int ArivalTime[n];
+  int actionTime[n];
+
+  printf("Enter the burst time: ");
+  for(int i=0; i<n; i++)
+  {
+    scanf("%d", &BurstTIme[i]);
+  }
+//   printf("Enter the arival time: ");
+//   for(int i=0; i<n; i++)
+//   {
+//     scanf("%d", &ArivalTime[i]);
+//   }
+  // printf("Enter the action time: ");
+  // for(int i=0; i<n; i++)
+  // {
+  //   scanf("%d", &actionTime[i]);
+  // }
+
+  int waitingTime[n];
+  waitingTime[0]=0;
+  for(int i=1; i<n; i++)
+  {
+    waitingTime[i]=waitingTime[i-1]+BurstTIme[i-1];
+  }
+  int burs[n];
+  for(int i=0; i<n; i++)
+  {
+    burs[i]=waitingTime[i]+BurstTIme[i];
+  }
+
+  int avT=0,avB=0;
+  for(int i=0; i<n; i++)
+  {
+    avT=waitingTime[i]+avT;
+  }
+  for(int i=0; i<n; i++)
+  {
+    avB=avB+burs[i];
+  }
+  double ans1=(double) avT/n;
+  double ans2=(double) avB/n;
+
+  printf("%lf is av time\n %lf is av turn time\n",ans1,ans2);
+  
+
+
+  return 0;
+}
