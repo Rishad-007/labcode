@@ -1,0 +1,25 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+  int a,n,i,j;
+  int box[]={6,23,63,12,56,22,4,1,76,34,65,92,4,7,34};
+  n=15;
+  for(i=0;i<n;i++)
+    {
+      for(j=i;j>0;j--)
+        {
+          if(box[j-1]>box[j])
+          {
+            swap(box[j-1],box[j]);
+          }
+        }
+    }
+
+  for(i=0;i<n;i++)
+    {
+      cout<<box[i]<<" ";
+    }
+  return 0;
+}
